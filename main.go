@@ -5,7 +5,7 @@ import (
 	"sync"
 	"time"
 
-	"./cache_generics"
+	"in-memory-cache-implementation/cache_generics"
 )
 
 func main() {
@@ -24,22 +24,22 @@ func main() {
 		}()
 	}
 
-	// for range 5 {
-	// 	go func() {
-	// 		fmt.Println("Going to sleep")
-	// 		time.Sleep(10 * time.Second)
-	// 		fmt.Println("Waking up")
+	for range 5 {
+		go func() {
+			fmt.Println("Going to sleep")
+			time.Sleep(10 * time.Second)
+			fmt.Println("Waking up")
 
-	// 		value, ok := cache.Get("a")
-	// 		fmt.Println("ok", ok)
-	// 		if ok {
-	// 			fmt.Println("a", value)
-	// 		} else {
-	// 			fmt.Println("not present")
-	// 		}
-	// 		wg.Done()
-	// 	}()
-	// }
+			value, ok := cache.Get("a")
+			fmt.Println("ok", ok)
+			if ok {
+				fmt.Println("a", value)
+			} else {
+				fmt.Println("not present")
+			}
+			wg.Done()
+		}()
+	}
 
 	cache.Clear()
 
